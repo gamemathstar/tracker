@@ -53,11 +53,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($deliverable->kpis as $kpi)
+                        @foreach($deliverable->__kpis() as $kpi)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$kpi->kpi_name}}</td>
-                                <td>{{$kpi->measurement_unit}}</td>
+                                <td>{{$kpi->kpi}}</td>
+                                <td>{{$kpi->unit_of_measurement}}</td>
                                 <td>{{$kpi->target}}</td>
                                 <td>{{$kpi->actual_value}}</td>
                                 <td>

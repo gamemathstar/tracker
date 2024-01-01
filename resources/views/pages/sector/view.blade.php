@@ -6,21 +6,24 @@
             Sector : {{$sector->name}}
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button class="btn btn-primary shadow-md mr-2">Print</button>
+            <button class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal"
+                    data-tw-target="#sectorHeadModal">Sector Head</button>
             <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center"> <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                 width="24" height="24"
-                                                                                 viewBox="0 0 24 24" fill="none"
-                                                                                 stroke="currentColor" stroke-width="2"
-                                                                                 stroke-linecap="round"
-                                                                                 stroke-linejoin="round"
-                                                                                 icon-name="plus"
-                                                                                 class="lucide lucide-plus w-4 h-4"
-                                                                                 data-lucide="plus"><line x1="12" y1="5"
-                                                                                                          x2="12"
-                                                                                                          y2="19"></line><line
-                                x1="5" y1="12" x2="19" y2="12"></line></svg> </span>
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="24" height="24"
+                             viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             icon-name="plus"
+                             class="lucide lucide-plus w-4 h-4"
+                             data-lucide="plus">
+                            <line x1="12" y1="5" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </span>
                 </button>
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
@@ -33,7 +36,8 @@
                                     <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
-                                Export Word </a>
+                                Export Word
+                            </a>
                         </li>
                         <li>
                             <a href="" class="dropdown-item">
@@ -54,14 +58,6 @@
     <div class="intro-y grid grid-cols-11 gap-5 mt-5">
         <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
             <div class="box p-5 rounded-md">
-{{--                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">--}}
-{{--                    <select name="" class="form-control" id="year">--}}
-{{--                        <option value="">Select Year</option>--}}
-{{--                        @foreach($sector->commimentYears() as $yearx)--}}
-{{--                            <option value="{{$yearx}}" {{ $yearx==$year?'selected':'' }}>{{$yearx}}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                </div>--}}
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
                     <div class="font-medium text-base truncate">Commitments</div>
                     <a href="javascript:;" class="flex items-center ml-auto text-primary" data-tw-toggle="modal"
@@ -134,7 +130,8 @@
                                         </div>
                                         <div class="col-span-12 sm:col-span-12">
                                             <label for="modal-form-2" class="form-label">Description</label>
-                                            <textarea name="description" id="del_deliverable_title" class="form-control" required></textarea>
+                                            <textarea name="description" id="del_deliverable_title" class="form-control"
+                                                      required></textarea>
                                         </div>
                                     </div> <!-- END: Modal Body -->
                                     <!-- BEGIN: Modal Footer -->
@@ -158,7 +155,7 @@
                                     <!-- BEGIN: Modal Header -->
                                     <div class="modal-header">
                                         <h2 class="font-medium text-base mr-auto">Edit Commitment
-                                            </h2>
+                                        </h2>
 
                                     </div> <!-- END: Modal Header -->
                                     <!-- BEGIN: Modal Body -->
@@ -170,7 +167,8 @@
                                         </div>
                                         <div class="col-span-12 sm:col-span-12">
                                             <label for="modal-form-2" class="form-label">Description</label>
-                                            <textarea name="description" id="comm-desc" class="form-control" required></textarea>
+                                            <textarea name="description" id="comm-desc" class="form-control"
+                                                      required></textarea>
                                         </div>
                                     </div> <!-- END: Modal Body -->
                                     <!-- BEGIN: Modal Footer -->
@@ -189,7 +187,58 @@
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
 
-                                <div class="modal-body"  id="viewDeliverableLoadAre">
+                                <div class="modal-body" id="viewDeliverableLoadAre">
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" data-tw-dismiss="modal"
+                                            class="btn btn-outline-secondary w-20 mr-1">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END: Modal Content -->
+
+                    <div id="sectorHeadModal" class="modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+
+                                    <h1>Sector Heads</h1>
+                                    <div class="overflow-x-auto">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">#</th>
+                                                <th class="whitespace-nowrap">First Name</th>
+                                                <th class="whitespace-nowrap">Last Name</th>
+                                                <th class="whitespace-nowrap">Username</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Angelina</td>
+                                                <td>Jolie</td>
+                                                <td>@angelinajolie</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Brad</td>
+                                                <td>Pitt</td>
+                                                <td>@bradpitt</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Charlie</td>
+                                                <td>Hunnam</td>
+                                                <td>@charliehunnam</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
 
@@ -233,7 +282,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h2>Add KPI for <strong  class="font-bold" id="del-title"></strong></h2>
+                    <h2>Add KPI for <strong class="font-bold" id="del-title"></strong></h2>
                     <input type="hidden" name="deliverable_id" value="" id="deliverable_id">
                     <hr>
                     <div class="text-warning mt-2" id="addKpiMsg">
@@ -241,19 +290,28 @@
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-2" class="form-label">KPI</label>
-                        <input id="kpi_name" type="text" class="form-control form-control-rounded" placeholder="KPI" name="kpi_name">
+                        <select name="" class="form-control form-control-rounded" id="kpi_id">
+                            <option value="">Select KPI</option>
+                            @foreach(\App\Models\Kpi::get() as $kpi)
+                                <option value="{{$kpi->id}}">{{$kpi->kpi}} - {{$kpi->unit_of_measurement}}</option>
+                            @endforeach
+                        </select>
+
                     </div>
                     <div class="mt-3">
-                        <label for="regular-form-2" class="form-label">Measurement Unit</label>
-                        <input id="measurement_unit" type="text" class="form-control form-control-rounded" placeholder="Measurement Unit" name="measurement_unit">
+                        <label for="regular-form-2" class="form-label">Year</label>
+                        <input id="year" type="number" class="form-control form-control-rounded" placeholder="Year"
+                               name="year">
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-2" class="form-label">Target</label>
-                        <input id="target" type="text" class="form-control form-control-rounded" placeholder="Target" name="target">
+                        <input id="target" type="text" class="form-control form-control-rounded" placeholder="Target"
+                               name="target">
                     </div>
                     <div class="mt-3">
-                        <label for="regular-form-2" class="form-label">Target</label>
-                        <input id="actual_value" type="text" class="form-control form-control-rounded" placeholder="Actual Value" name="actual_value">
+                        <label for="regular-form-2" class="form-label">Actual Value</label>
+                        <input id="actual_value" type="text" class="form-control form-control-rounded"
+                               placeholder="Actual Value" name="actual_value">
                     </div>
                     <hr>
                     <div class="mt-3 text-center">
@@ -278,21 +336,21 @@
             const viewDeliverablesModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#viewDeliverablesModal"));
             const addKPIModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#next-overlapping-modal-preview"));
 
-            $("#year").on('change', function (e) {
-                document.location = url + $(this).val();
-            });
+            // $("#year").on('change', function (e) {
+            //     document.location = url + $(this).val();
+            // });
 
             @if($comm_id)
-                loadCommitments({{$comm_id}});
+            loadCommitments({{$comm_id}});
             @endif
 
 
             $(".commitments").on('click', function (e) {
                 // $("#loadArea").load("commitments.deliverables");
-               loadCommitments($(this).attr('com-id'));
+                loadCommitments($(this).attr('com-id'));
             });
 
-            $('body').on('click','#editCommitmentBtn',function (){
+            $('body').on('click', '#editCommitmentBtn', function () {
                 com_id = $(this).attr('com-id');
                 com_title = $(this).attr('com-title');
                 com_description = $(this).attr('com-description');
@@ -302,35 +360,43 @@
                 editCommitmentModal.show();
             });
 
-            $('body').on('click','#addDeliverableBtn',function (){
+            $('body').on('click', '#addDeliverableBtn', function () {
                 com_id = $(this).attr('com-id');
                 $("#addDeliverableBtnComId").val(com_id);
                 addDeliverablesModal.show();
             });
 
-            $('body').on('click','.viewDeliverable',function (){
+            $('body').on('click', '.viewDeliverable', function () {
                 // viewDeliverableLoadAre
-                $("#viewDeliverableLoadAre").load("{{route('deliverable.view')}}?id="+$(this).attr('del-id'));
+                $("#viewDeliverableLoadAre").load("{{route('deliverable.view')}}?id=" + $(this).attr('del-id'));
                 viewDeliverablesModal.show();
             });
-            $('body').on('click','#addEditDeliverableBtn',function (){
+
+            $('body').on('click', '#addEditDeliverableBtn', function () {
 
                 $('#deliverable_id').val($('#addKpiModalBtn').attr('del-id'));
+                year = $('#year').val();
                 actual_value = $('#actual_value').val();
                 target = $('#target').val();
                 measurement_unit = $('#measurement_unit').val();
-                kpi_name = $('#kpi_name').val();
+                kpi_id = $('#kpi_id').val();
                 deliverable_id = $('body').find('#addKpiModalBtn').attr('del-id');
                 $.ajax({
-                    type:'get',
-                    url:'{{route('deliverable.add.kpi')}}',
-                    data:{deliverable_id:deliverable_id,kpi_name:kpi_name,measurement_unit:measurement_unit,target:target,actual_value:actual_value},
-                    success:function (data){
+                    type: 'get',
+                    url: '{{route('deliverable.add.kpi')}}',
+                    data: {
+                        deliverable_id: deliverable_id,
+                        kpi_id: kpi_id,
+                        target: target,
+                        actual_value: actual_value,
+                        year: year
+                    },
+                    success: function (data) {
                         console.log(data);
-                        if(data.status==1){
+                        if (data.status == 1) {
                             addKPIModal.hide();
-                            $("#viewDeliverableLoadAre").load("{{route('deliverable.view')}}?id="+deliverable_id);
-                        }else{
+                            $("#viewDeliverableLoadAre").load("{{route('deliverable.view')}}?id=" + deliverable_id);
+                        } else {
                             $("#addKpiMsg").html(data.message);
                         }
                     }
@@ -338,16 +404,14 @@
             });
 
 
-
-
         });
 
-        function loadCommitments(id){
+        function loadCommitments(id) {
             $.ajax({
-                type:'Post',
-                url:"{{route("commitments.deliverables",[''])}}/"+id,
-                data:{_token:'{{ csrf_token() }}' },
-                success:function (data){
+                type: 'Post',
+                url: "{{route("commitments.deliverables",[''])}}/" + id,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function (data) {
                     $("#loadArea").html(data);
                 }
             });

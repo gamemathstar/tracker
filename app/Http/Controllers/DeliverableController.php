@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Commitment;
 use App\Models\Deliverable;
+use App\Models\DeliveryKpi;
 use App\Models\Kpi;
 use Illuminate\Http\Request;
 
@@ -42,10 +43,10 @@ class DeliverableController extends Controller
 //        return $request;
         $deliverable = Deliverable::find($request->deliverable_id);
         if($deliverable){
-            $kpi = new Kpi();
+            $kpi = new DeliveryKpi();
             $kpi->deliverable_id = $request->deliverable_id;
-            $kpi->kpi_name = $request->kpi_name;
-            $kpi->measurement_unit = $request->measurement_unit;
+            $kpi->year = $request->year;
+            $kpi->kpi_id = $request->kpi_id;
             $kpi->target = $request->target;
             $kpi->actual_value = $request->actual_value;
             if($kpi->save()){

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Deliverable extends Model
 {
@@ -22,7 +23,12 @@ class Deliverable extends Model
 
     public function kpis()
     {
-        return $this->hasMany(Kpi::class);
+        return $this->hasMany(DeliveryKpi::class);
+    }
+
+    public function __kpis()
+    {
+        return DB::table('delivery_kpis')->join('kpis','kpis.id','=','delivery_kpis.kpi_id')->where('delivery_kpis.deliverable_id',$this->id)->get();
     }
 
 
