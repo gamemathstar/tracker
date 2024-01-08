@@ -36,7 +36,7 @@
         </li>
 
         <li>
-            <a href="{{route('dashboard')}}" class="side-menu">
+            <a href="{{route('users.index')}}" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
                 <div class="side-menu__title">
                     Users

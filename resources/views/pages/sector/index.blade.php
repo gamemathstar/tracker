@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    @php
+        $user = Auth::user();
+    @endphp
     <h2 class="intro-y text-lg font-medium mt-10">
         Manage Sectors
     </h2>
@@ -49,6 +52,7 @@
                     <th class="whitespace-nowrap">#</th>
                     <th class="whitespace-nowrap">SECTOR NAME</th>
                     <th class="whitespace-nowrap">DESCRIPTION</th>
+                    <th class="whitespace-nowrap">HEAD</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
                 </thead>
@@ -59,11 +63,26 @@
                            {{$loop->iteration}}
                        </td>
                        <td>
-                           <a href="" class="font-medium whitespace-nowrap">{{$sector->name}}</a>
+                           <a
+                               href="{{ $user->role==0?route("sectors.view",[$sector->id]):route("sectors.show",[$sector->id]) }}"
+                               class="font-medium whitespace-nowrap">{{$sector->name}}</a>
                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5"></div>
                        </td>
                        <td class="text">
                            {{$sector->description}}
+                       </td>
+                       <td class="text">
+                           @php
+                                $head =  $sector->head();
+                           @endphp
+                           @if($head)
+                               <a href="{{route('users.view',[$head->user_id])}}"  class="text-primary/80">
+                                   {{$head->full_name}}
+                               </a>
+                           @else
+                                ---
+                           @endif
+
                        </td>
                        <td class="table-report__action w-56">
                            <div class="flex justify-center items-center">

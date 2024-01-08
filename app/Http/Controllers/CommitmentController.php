@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commitment;
+use App\Models\CommitmentBudget;
+use App\Models\SectorBudget;
 use Illuminate\Http\Request;
 
 class CommitmentController extends Controller
@@ -14,6 +16,23 @@ class CommitmentController extends Controller
     }
 
 
+    public function storeBudget(Request $request)
+    {
+//        return $request;
+        $request->validate([
+            'commitment_id' => 'required|exists:commitments,id',
+            'amount' => 'required|max:255',
+            'year' => 'required|integer',
+            // Add other validation rules as needed
+        ]);
+
+        $bdg = new CommitmentBudget();
+        $bdg->year = $request->year;
+        $bdg->commitment_id = $request->commitment_id;
+        $bdg->amount = $request->amount;
+        $bdg->save();
+        return back();
+    }
     public function store(Request $request)
     {
 //        return $request;
