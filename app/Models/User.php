@@ -60,4 +60,6 @@ class User extends Authenticatable
         $sectorHead = $this->sectorHead();
         return $sectorHead?Sector::find($sectorHead->sector_id):null;
     }
+
+
 }

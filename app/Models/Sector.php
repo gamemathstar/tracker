@@ -61,4 +61,17 @@ class Sector extends Model
             ->get();
     }
 
+
+    public static function currentYear()
+    {
+        return date('Y');
+    }
+
+    public function distribution($year=0)
+    {
+        $yearX = $year?:StateBudget::currentYear();
+        $budget = StateBudget::activeBudget();
+        $myBudget = SectorBudget::where('sector_id',$this->id)->sum('amount');
+        return $myBudget && $budget? intval(($myBudget/$budget->amount)*100) :0;
+    }
 }
